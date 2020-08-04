@@ -1,0 +1,7 @@
+version: "3"
+services:
+  main:
+    tty: true
+    build: ./
+    volumes:
+      - ./home:/root/home
