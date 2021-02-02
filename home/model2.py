@@ -10,23 +10,23 @@ def main(text):
     model = ft.load_model("model_filename.bin")
 
     if text == '':
-        estimate = model.predict([" >> 754 ? ? ? ??? ?? ? ?? ? ?? ? ? ?? ?? ?? ? ? ? ? ??? ?? ?? ? ?? ? ???? ? ?? ? ? ?? ?? ?? ?? ? ?? ? ? ?>> 744 ? ??? ? ? ??? ? ? ?  ? 2 ? 2 ? 1 ? ? ?? ? ? ? ? ? ? ? ? ?? ? ? ?? ? ? ?? ? ? ?? ? ? ? ? ? ?? ? ? ? ? ? ? ? ? ? ?? ? ?? ? ?? ? ?? ?? ? ??? ? ?? ? ???? ?? ?? ? ?? ?? ? ? ? ??? ? ? ??? ?"], k=6)
+        estimate = model.predict([" >> 754 村 側 に そんな こと は 言っ て ない … … だっ たら ほぼ 羊 が 真 で 決まり なん じゃ が なあ 。 オットー の 散り 際 が 虚勢 だっ たら いい ん じゃ が の 。>> 744 は 一昨日 の 話 かのう 。 占 騙  灰 2 霊 2 に 1 狼 の 環境 の 中 で 占 狼 灰 狼 の 可能 性 に 期待 し て おっ た ん じゃ 。 で 霊 だ と 占い が 不 確 じ ゃ が 灰 は 灰 内訳 を 確定 さ せる 。 ただ 冷静 に 考えれ ば 占い が 切り捨て られ てる ん じゃ から 占 狼 は 薄かっ た ん じゃろ な"], k=6)
     else:
         estimate = model.predict([text], k=6)
-    #print("???: "+estimate[0][0][0].replace(' ', ''),", ??: "+str(estimate[1][0][0]))
+    #print("ラベル: "+estimate[0][0][0].replace(' ', ''),", 確率: "+str(estimate[1][0][0]))
     #print(model.words)
     #print(model.predict('human'))
 
     return estimate[0][0][0].replace(' ', '-')
 
-villager = {"1":"????????????", "2":"??", "3":"?????", "4":"????", "5":"???????", "6":"? ???????", "7":"(....??....zzz?", "8":"(....zzz)", "9":"??"}
-wlof = {"1":"??????", "2":"??", "3":"?????", "4":"????", "5":"?????", "6":"???????????", "7":"(....??....zzz?", "8":"(??????....zzz)", "9":"???"}
-hamstar = {"1":"??????", "2":"???", "3":"?????", "4":"?????", "5":"????????", "6":"?????", "7":"(....??....zzz?", "8":"(....zzz)", "9":"???"}
-fortune = {"1":"??????", "2":"?", "3":"???????", "4":"????", "5":"????", "6":"?????", "7":"(....??....zzz?", "8":"(....zzz)", "9":"??"}
-medium = {"1":"??????", "2":"??", "3":"????", "4":"????", "5":"???????", "6":"????", "7":"? ??????", "8":"(....zzz)", "9":"??"}
-hunter = {"1":"??????", "2":"??", "3":"????", "4":"????", "5":"?????", "6":"??", "7":"(....???....zzz", "8":"?????...", "9":"???"}
-co_owner = {"1":"???", "2":"???", "3":"???????", "4":"????", "5":"???????", "6":"??", "7":"(........zzz)", "8":"(....zzz)", "9":"????"}
-madman = {"1":"???????", "2":"??", "3":"?????", "4":"????", "5":"???????", "6":"??", "7":"(....??....zzz)", "8":"(....zzz)", "9":"????"}
+villager = {"1":"ボクじゃないですよやだー", "2":"ま？", "3":"村人でづ。", "4":"ナイスぅ", "5":"ぎだいあざまる", "6":"僕 もつられますよ", "7":"(....眠い....zzz）", "8":"(....zzz)", "9":"へー"}
+wlof = {"1":"違いますよ～", "2":"ま？", "3":"村人でづ。", "4":"ナイスぅ", "5":"ぎだいあざ", "6":"ありがとうございます。", "7":"(....眠い....zzz）", "8":"(まだ寝てよう....zzz)", "9":"うーん"}
+hamstar = {"1":"違いますよ～", "2":"ふーん", "3":"村人でづ。", "4":"やるわね。", "5":"ぎだいありがとう", "6":"ありがとう", "7":"(....眠い....zzz）", "8":"(....zzz)", "9":"ふーん"}
+fortune = {"1":"違いますよ～", "2":"ん", "3":"占い師ですね～", "4":"やるわね", "5":"きたわね", "6":"ありがとう", "7":"(....眠い....zzz）", "8":"(....zzz)", "9":"へー"}
+medium = {"1":"違いますよ～", "2":"ま？", "3":"村人でづ", "4":"やるやん", "5":"ぎだいさんくす", "6":"てんくす", "7":"夜 型なんだよね", "8":"(....zzz)", "9":"へー"}
+hunter = {"1":"違いますよ～", "2":"ま？", "3":"村人でづ", "4":"やるやん", "5":"ぎだいりょ", "6":"あり", "7":"(....う～ん....zzz", "8":"月がきれい...", "9":"う～ん"}
+co_owner = {"1":"違うで", "2":"ふーん", "3":"共有者ですねぇ", "4":"やるわね", "5":"ぎだいあざまる", "6":"あり", "7":"(........zzz)", "8":"(....zzz)", "9":"そっかぁ"}
+madman = {"1":"違うんだよなぁ", "2":"へー", "3":"村人ですね", "4":"ナイスぅ", "5":"ぎだいさんくす", "6":"あり", "7":"(....眠い....zzz)", "8":"(....zzz)", "9":"そっかぁ"}
 
 
 def most(dicts):
@@ -50,34 +50,34 @@ def most(dicts):
     return Maxn
     #return (str(Maxn) + ":" + str(Max))
 
-def export(day,doubt_to,black,white):#???????
+def export(day,doubt_to,black,white):#ここが出力部分
     if day == "pre":
         return
     print(day)
     print("SUS",end="")
-    Exec = most(doubt_to)   #???????
+    Exec = most(doubt_to)   #処刑対象の出力
     print("BLACK",end="")
-    Orac = most(black)  #???????
-    print("WHITE" + str(white)) #?????????????????
-    if day != "?????":
+    Orac = most(black)  #占い対象の出力
+    print("WHITE" + str(white)) #庇う対象もしくは殺害先の対象の出力
+    if day != "プロローグ":
         if doubt_to != {}:
             Exec = random.choice(Exec)
         else:
             Exec = random.choice(chr_list)
-        print("Executioned : " + Exec)#??????
+        print("Executioned : " + Exec)
         if black != {}:
             Orac = random.choice(Orac)
         else:
             Orac = random.choice(chr_list)
-        print("Oracle : " + Orac)#??????
+        print("Oracle : " + Orac)
         if white != {}:
             Sacr = random.choice(list(white.keys()))
             Prot = random.choice(list(white.keys()))
         else:
             Sacr = random.choice(chr_list)
             Prot = random.choice(chr_list)
-        print("Sacrifice : " + Sacr)#??????
-        print("Protected : " + Prot)#??????
+        print("Sacrifice : " + Sacr)
+        print("Protected : " + Prot)
     print("\n")
 
 
@@ -167,41 +167,41 @@ for row in reader:
 
     for i in range(len(remark)):
         j=2
-        if remark[i] == "?":
+        if remark[i] == "●":
             if remark[i+1] in name:
                 adana = name[remark[i+1]]
                 if adana not in black:
                     black[adana] = 1
                 else:
                     black[adana] += 1
-            while remark[i+j] in name or remark[i+j] == "?":
+            while remark[i+j] in name or remark[i+j] == "、":
                 if remark[i+j] in name:
                     adana = name[remark[i+j]]
                     if adana not in black:
                         black[adana] = 1
                     else:
                         black[adana] += 1
-                elif remark[i+j] == "?":
+                elif remark[i+j] == "、":
                     pass
                 j+=1
 
 
 
-        if remark[i] == "?":
+        if remark[i] == "○":
             if remark[i+1] in name:
                 adana = name[remark[i+1]]
                 if adana not in white:
                     white[adana] = 1
                 else:
                     white[adana] += 1
-            while remark[i+j] in name or remark[i+j] == "?":
+            while remark[i+j] in name or remark[i+j] == "、":
                 if remark[i+j] in name:
                     adana = name[remark[i+j]]
                     if adana not in black:
                         black[adana] = 1
                     else:
                         black[adana] += 1
-                elif remark[i+j] == "?":
+                elif remark[i+j] == "、":
                     pass
                 j+=1
 
