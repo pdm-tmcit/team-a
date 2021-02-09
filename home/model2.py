@@ -3,6 +3,7 @@ import fasttext as ft
 import MeCab
 import pprint
 import random
+import test2
 
 def main(text):
 
@@ -50,7 +51,7 @@ def most(dicts):
     return Maxn
     #return (str(Maxn) + ":" + str(Max))
 
-def export(day,doubt_to,black,white):#ここが出力部分
+def export(day,doubt_to,black,white,row):#ここが出力部分
     if day == "pre":
         return
     print(day)
@@ -65,11 +66,13 @@ def export(day,doubt_to,black,white):#ここが出力部分
         else:
             Exec = random.choice(chr_list)
         print("Executioned : " + Exec)#Execが処刑先
+        test2.main(str(row[1]), str(row[2]), str(row[1]), '', 'morning')
         if black != {}:
             Orac = random.choice(Orac)
         else:
             Orac = random.choice(chr_list)
         print("Oracle : " + Orac)#Oracが占い先
+        test2.main(str(row[1]), str(row[2]), str(row[1]), '', 'night')
         if white != {}:
             Sacr = random.choice(list(white.keys()))
             Prot = random.choice(list(white.keys()))
@@ -77,7 +80,9 @@ def export(day,doubt_to,black,white):#ここが出力部分
             Sacr = random.choice(chr_list)
             Prot = random.choice(chr_list)
         print("Sacrifice : " + Sacr)#Sacrが人狼の殺害先
+        test2.main(str(row[1]), str(row[2]), str(row[1]), '', 'morning')
         print("Protected : " + Prot)#Protが狩人の庇う先
+
     print("\n")
 
 
@@ -110,7 +115,7 @@ header = next(reader)
 for row in reader:
 
     if str(row[0]) != day:  #RESET
-        export(day,doubt_to,black,white)
+        export(day,doubt_to,black,white,row)
         day = row[0]
         doubt_to = {}
         black = {}
@@ -125,33 +130,44 @@ for row in reader:
         villager_label = main(str(a))
         print(villager_label)
 
+        row[1]
+
         if villager_label == '__label__1':
             print(villager["1"])
             row[3] = villager["1"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), '', 'noon')
         if villager_label == '__label__2':
             print(villager["2"])
             row[3] = villager["2"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__3':
             print(villager["3"])
             row[3] = villager["3"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__4':
             print(villager["4"])
             row[3] = villager["4"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__5':
             print(villager["5"])
             row[3] = villager["5"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__6':
             print(villager["6"])
             row[3] = villager["6"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__7':
             print(villager["7"])
             row[3] = villager["7"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__8':
             print(villager["8"])
             row[3] = villager["8"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
         if villager_label == '__label__9':
             print(villager["9"])
             row[3] = villager["9"]
+            test2.main(str(row[1]), str(row[2]), str(row[1]), str(row[3]), 'noon')
 
 
     fp.write(str(row[0]+','+row[1]+','+row[2]+','+row[3]+','+'\n'))
@@ -214,7 +230,7 @@ for row in reader:
         doubt_to[row[1]] += 1
     count += 1
 
-export(day,doubt_to,black,white)
+export(day,doubt_to,black,white,row)
 #print(day)
 #pprint.pprint(most(doubt_to))
 #print("BLACK" + str(most(black)))
